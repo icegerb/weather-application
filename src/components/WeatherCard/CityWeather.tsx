@@ -9,11 +9,11 @@ type Props = {
 
 const CityWeather = ({ setCity, citiesWeather, cities }: Props) => {
   return (
-    <div className="mt-6 flex flex-row flex-wrap justify-between gap-6">
+    <div className="mt-6 grid grid-cols-2 justify-between gap-6 xl:grid-cols-4">
       {citiesWeather.map((weather) => (
         <button
           key={weather.city}
-          className="relative flex w-36 rounded-2xl bg-cover bg-center py-2 text-white"
+          className="relative flex min-w-32 max-w-36 rounded-2xl bg-cover bg-center py-2 text-white"
           style={{
             backgroundImage: `url(${cities.find((city) => city.city.toLowerCase().trim() === weather.city.toLowerCase().trim())?.background})`,
           }}

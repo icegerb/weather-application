@@ -47,8 +47,8 @@ const WeatherCard = () => {
   }, [city, handleWeatherSearch]);
 
   return (
-    <div className="max-w-10/12 m-8 flex flex-wrap justify-center gap-9 rounded-[52px] bg-slate-100 p-6 lg:flex-nowrap">
-      <div className="w-96 min-w-96">
+    <div className="lg:max-w-10/12 m-8 flex h-fit flex-wrap justify-center gap-9 rounded-[52px] bg-slate-100 p-6 md:flex-nowrap">
+      <div className="w-full sm:w-96">
         {currentWeather && <WeatherDetails weather={currentWeather} />}
       </div>
       <div className="flex flex-col">

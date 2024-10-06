@@ -44,7 +44,7 @@ const WeatherDetails = ({ weather }: Props) => {
           className="my-4 w-36"
         />
       </div>
-      <div className="grid grid-flow-col grid-cols-4 gap-4 rounded-xl bg-white/80 px-2 py-4 text-sm">
+      <div className="grid grid-cols-2 gap-4 rounded-xl bg-white/80 px-2 py-4 text-sm md:grid-cols-4">
         {weatherStats.map((stat) => (
           <div key={stat.label} className="flex flex-col items-center gap-2">
             <img src={stat.icon} alt={stat.label} className="w-7" />
