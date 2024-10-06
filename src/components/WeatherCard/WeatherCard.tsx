@@ -8,7 +8,7 @@ import { CurrentWeather, FutureWeather } from "../../types/weather";
 import { cities } from "../../constants/cities";
 
 const WeatherCard = () => {
-  const [city, setCity] = useState<string>("Brisbane");
+  const [city, setCity] = useState<string>("");
   const [currentWeather, setCurrentWeather] = useState<CurrentWeather | null>();
   const [futureWeatherList, setFutureWeatherList] = useState<FutureWeather[]>(
     [],
@@ -16,10 +16,6 @@ const WeatherCard = () => {
   const [citiesWeather, setCitiesWeather] = useState<CurrentWeather[]>([]);
 
   const handleWeatherSearch = useCallback(async (city: string) => {
-    if (!city) {
-      return;
-    }
-
     try {
       const response = await fetchWeather(city);
       if (response) {

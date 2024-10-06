@@ -1,4 +1,3 @@
-import React from "react";
 import { mount } from "cypress/react";
 import Forecast from "../../../src/components/WeatherCard/Forecast";
 
@@ -7,35 +6,35 @@ describe("Forecast component", () => {
     const mockFutureWeatherList = [
       {
         conditionText: "Sunny",
-        png: "path/to/sunny-icon.png", // 替换为实际图标路径
+        png: "/__cypress/src/src/assets/weather_icon/Sunny.png",
         week: "Monday",
         date: "03 October",
         temperature: "18 ~ 28°C",
       },
       {
         conditionText: "Cloudy",
-        png: "path/to/cloudy-icon.png", // 替换为实际图标路径
+        png: "/__cypress/src/src/assets/weather_icon/Cloudy.png",
         week: "Tuesday",
         date: "04 October",
         temperature: "16 ~ 24°C",
       },
       {
         conditionText: "Rainy",
-        png: "path/to/rainy-icon.png", // 替换为实际图标路径
+        png: "/__cypress/src/src/assets/weather_icon/Rain.png",
         week: "Wednesday",
         date: "05 October",
         temperature: "15 ~ 22°C",
       },
       {
         conditionText: "Foggy",
-        png: "path/to/foggy-icon.png", // 替换为实际图标路径
+        png: "/__cypress/src/src/assets/weather_icon/Cloudy.png",
         week: "Thursday",
         date: "06 October",
         temperature: "14 ~ 21°C",
       },
       {
         conditionText: "Partly Cloudy",
-        png: "path/to/partly-cloudy-icon.png", // 替换为实际图标路径
+        png: "/__cypress/src/src/assets/weather_icon/Cloudy_day.png",
         week: "Friday",
         date: "07 October",
         temperature: "17 ~ 26°C",

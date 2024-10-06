@@ -1,4 +1,3 @@
-import React from "react";
 import { mount } from "cypress/react18";
 import CityWeather from "../../../src/components/WeatherCard/CityWeather";
 import { CurrentWeather } from "../../../src/types/weather";
@@ -15,7 +14,7 @@ describe("<CityWeather />", () => {
         currentTemperature: "25°C",
         temperature: "20 ~ 30°C",
         conditionText: "Sunny",
-        png: "",
+        png: "/__cypress/src/src/assets/weather_icon/Cloudy_day.png",
         bgPng: "",
         vars: {
           windSpeed: "15 km/h",
@@ -30,7 +29,7 @@ describe("<CityWeather />", () => {
         currentTemperature: "20°C",
         temperature: "18 ~ 25°C",
         conditionText: "Cloudy",
-        png: "",
+        png: "/__cypress/src/src/assets/weather_icon/Cloudy.png",
         bgPng: "",
         vars: {
           windSpeed: "10 km/h",
@@ -45,7 +44,7 @@ describe("<CityWeather />", () => {
         currentTemperature: "15°C",
         temperature: "12 ~ 20°C",
         conditionText: "Rainy",
-        png: "",
+        png: "/__cypress/src/src/assets/weather_icon/Rain.png",
         bgPng: "",
         vars: {
           windSpeed: "20 km/h",
@@ -60,7 +59,7 @@ describe("<CityWeather />", () => {
         currentTemperature: "10°C",
         temperature: "8 ~ 15°C",
         conditionText: "Foggy",
-        png: "",
+        png: "/__cypress/src/src/assets/weather_icon/Cloudy.png",
         bgPng: "",
         vars: {
           windSpeed: "5 km/h",

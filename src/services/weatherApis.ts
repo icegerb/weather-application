@@ -6,6 +6,7 @@ import {
   WeatherApiResponse,
 } from "../types/weather";
 import { weatherBgMap, weatherIconMap } from "../constants/weatherMaps";
+import { getCurrentLocation } from "../utils/getCurrentLocation";
 // import { getWeatherApiKey } from "../secrets";
 
 const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
@@ -16,7 +17,13 @@ export async function fetchWeather(city: string): Promise<{
   currentWeather: CurrentWeather;
   futureWeatherList: FutureWeather[];
 }> {
-  const API_URL = `https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${city}&days=5&aqi=yes&alerts=yes`;
+  const { lat, lon } = await getCurrentLocation();
+  let API_URL: string;
+  if (city) {
+    API_URL = `https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${city}&days=5&aqi=yes&alerts=yes`;
+  } else {
+    API_URL = `https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${lat},${lon}&days=5&aqi=yes&alerts=yes`;
+  }
   try {
     const response = await fetch(API_URL);
 

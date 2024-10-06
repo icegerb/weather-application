@@ -1,4 +1,3 @@
-import React from "react";
 import { mount } from "cypress/react";
 import WeatherDetails from "../../../src/components/WeatherCard/WeatherDetails";
 import { CurrentWeather } from "../../../src/types/weather";
@@ -11,7 +10,7 @@ describe("WeatherDetails component", () => {
       currentTemperature: "26",
       temperature: "18 ~ 28",
       conditionText: "Partly Cloudy",
-      png: "//cdn.weatherapi.com/weather/64x64/day/116.png",
+      png: "/__cypress/src/src/assets/weather_icon/Cloudy_day.png",
       bgPng: "/__cypress/src/src/assets/background/Cloudy_day_background.png",
       vars: {
         avgHumidity: "50%",
