@@ -1,0 +1,11 @@
+@font-face {
+  font-family: 'AlimamaFangYuanTiVF-Thin';
+  src: url('./assets/fonts/AlimamaFangYuanTiVF-Thin.woff2') format('woff2');
+}
+
+body {
+  font-family: 'AlimamaFangYuanTiVF-Thin', Arial, Helvetica, sans-serif;
+}
+* {
+  box-sizing: border-box;
+}

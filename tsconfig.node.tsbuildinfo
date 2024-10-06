@@ -1,0 +1,1 @@
+{"root":["./src/secrets.ts","./src/vite-env.d.ts","./src/constants/cities.ts","./src/constants/weathermaps.ts","./src/services/weatherapis.ts","./src/types/city.ts","./src/types/weather.ts","./vite.config.ts"],"version":"5.6.2"}
