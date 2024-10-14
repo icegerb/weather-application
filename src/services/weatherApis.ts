@@ -7,16 +7,21 @@ import {
 } from "../types/weather";
 import { weatherBgMap, weatherIconMap } from "../constants/weatherMaps";
 import { getCurrentLocation } from "../utils/getCurrentLocation";
-// import { getWeatherApiKey } from "../secrets";
+import { getWeatherApiKey } from "../secrets";
 
-const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
-// const API_KEY2 = await getWeatherApiKey();
-// console.log(API_KEY2);
+// const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
 
 export async function fetchWeather(city: string): Promise<{
   currentWeather: CurrentWeather;
   futureWeatherList: FutureWeather[];
 }> {
+  let API_KEY;
+  try {
+    API_KEY = await getWeatherApiKey();
+  } catch (error) {
+    console.error("Error fetching API key:", error);
+  }
+
   const { lat, lon } = await getCurrentLocation();
   let API_URL: string;
   if (city) {
