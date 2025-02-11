@@ -57,7 +57,7 @@ export async function fetchWeather(city: string): Promise<{
       currentTemperature: `${current.hour[getHours(new Date())].temp_c}°`,
       temperature: `${current.day.mintemp_c} ~ ${current.day.maxtemp_c}°`,
       conditionText: conditionText,
-      png: weatherIconMap[conditionText],
+      png: weatherIconMap[conditionText] || data.current.condition.icon,
       bgPng: weatherBgMap[conditionText],
       vars: {
         avgHumidity: `${current.day.avghumidity}%`,

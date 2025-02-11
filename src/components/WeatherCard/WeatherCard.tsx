@@ -18,7 +18,6 @@ const WeatherCard = () => {
   const handleWeatherSearch = useCallback(async (city: string) => {
     try {
       const response = await fetchWeather(city);
-      console.log(response);
       if (response) {
         const { currentWeather, futureWeatherList } = response;
         setCurrentWeather(currentWeather);

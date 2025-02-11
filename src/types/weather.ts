@@ -28,6 +28,7 @@ export type WeatherApiResponse = {
     is_day: number;
     condition: {
       text: string;
+      icon: string;
       code: number;
     };
     wind_kph: number;
