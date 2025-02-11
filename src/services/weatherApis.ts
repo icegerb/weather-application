@@ -7,20 +7,21 @@ import {
 } from "../types/weather";
 import { weatherBgMap, weatherIconMap } from "../constants/weatherMaps";
 import { getCurrentLocation } from "../utils/getCurrentLocation";
-import { getWeatherApiKey } from "../secrets";
+// import { getWeatherApiKey } from "../secrets";
 
-// const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
+const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
 
 export async function fetchWeather(city: string): Promise<{
   currentWeather: CurrentWeather;
   futureWeatherList: FutureWeather[];
 }> {
-  let API_KEY;
-  try {
-    API_KEY = await getWeatherApiKey();
-  } catch (error) {
-    console.error("Error fetching API key:", error);
-  }
+  // Get api key from AWS secret manager
+  // let API_KEY;
+  // try {
+  //   API_KEY = await getWeatherApiKey();
+  // } catch (error) {
+  //   console.error("Error fetching API key:", error);
+  // }
 
   const { lat, lon } = await getCurrentLocation();
   let API_URL: string;
@@ -70,7 +71,8 @@ export async function fetchWeather(city: string): Promise<{
       .slice(1)
       .map((i: ForecastDay) => ({
         conditionText: i.day.condition.text.trim(),
-        png: weatherIconMap[i.day.condition.text.trim()],
+        png:
+          weatherIconMap[i.day.condition.text.trim()] || i.day.condition.icon,
         week: format(new Date(i.hour[12].time), "EEEE"),
         date: format(new Date(i.hour[12].time), "dd MMMM"),
         temperature: `${i.day.mintemp_c} ~ ${i.day.maxtemp_c}°`,

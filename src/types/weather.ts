@@ -1,6 +1,7 @@
 export type ForecastDay = {
   day: {
     condition: {
+      icon: string;
       text: string;
     };
     mintemp_c: number;

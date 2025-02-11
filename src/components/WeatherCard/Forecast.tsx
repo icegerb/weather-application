@@ -4,6 +4,7 @@ type Props = {
   weatherList: FutureWeather[];
 };
 const Forecast = ({ weatherList }: Props) => {
+  console.log(weatherList);
   return (
     <div className="mb-6 grid flex-1 grid-cols-2 justify-between gap-6 xl:grid-cols-4">
       {weatherList.map((weather) => {
