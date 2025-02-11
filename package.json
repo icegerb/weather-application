@@ -1,5 +1,6 @@
 {
   "name": "weather_application",
+  "homepage": "https://icegerb.github.io/weather-application/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -8,7 +9,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "cy:open": "cypress open"
+    "cy:open": "cypress open",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.670.0",
