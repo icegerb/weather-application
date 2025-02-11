@@ -1,0 +1,43 @@
+name: Deploy Weather App
+
+on:
+  push:
+    branches: ["master"]
+  pull_request:
+    branches: ["master"]
+
+env:
+  VITE_WEATHER_API_KEY: ${{ secrets.VITE_WEATHER_API_KEY }}
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [20.x]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+
+      - run: npm ci
+
+      - name: Run TypeScript type checking
+        run: npx tsc --noEmit
+
+      - name: Build project
+        run: npm run build
+
+      - name: Deploy with gh-pages
+        run: |
+          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          npm run deploy -- -u "github-actions-bot <support+actions@github.com>"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
