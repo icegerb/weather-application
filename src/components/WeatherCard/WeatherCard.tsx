@@ -6,8 +6,10 @@ import WeatherDetails from "./WeatherDetails";
 import { fetchWeather } from "../../services/weatherApis";
 import { CurrentWeather, FutureWeather } from "../../types/weather";
 import { cities } from "../../constants/cities";
+import Spinner from "../../assets/Spinner.svg";
 
 const WeatherCard = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [city, setCity] = useState<string>("");
   const [currentWeather, setCurrentWeather] = useState<CurrentWeather | null>();
   const [futureWeatherList, setFutureWeatherList] = useState<FutureWeather[]>(
@@ -29,13 +31,20 @@ const WeatherCard = () => {
   }, []);
 
   const fetchCitiesWeather = useCallback(async () => {
-    const weatherData = await Promise.all(
-      cities.map(async (city) => {
-        const response = await fetchWeather(city.city);
-        return response?.currentWeather;
-      }),
-    );
-    setCitiesWeather(weatherData);
+    setIsLoading(true);
+    try {
+      const weatherData = await Promise.all(
+        cities.map(async (city) => {
+          const response = await fetchWeather(city.city);
+          return response?.currentWeather;
+        }),
+      );
+      setCitiesWeather(weatherData);
+    } catch (error) {
+      console.error("Failed to fetch weather:", error);
+    } finally {
+      setIsLoading(false);
+    }
   }, []);
 
   useEffect(() => {
@@ -46,7 +55,9 @@ const WeatherCard = () => {
     handleWeatherSearch(city);
   }, [city, handleWeatherSearch]);
 
-  return (
+  return isLoading ? (
+    <img src={Spinner} alt="loading spinner" className="max-w-3xs bg-none" />
+  ) : (
     <div className="lg:max-w-10/12 m-8 flex h-fit flex-wrap justify-center gap-9 rounded-[52px] bg-slate-100 p-6 md:flex-nowrap">
       <div className="w-full sm:w-96">
         {currentWeather && <WeatherDetails weather={currentWeather} />}
